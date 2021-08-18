@@ -1,14 +1,9 @@
-# GA4GH Starter Kit Docs
+# Website
 
-Documentation site for the GA4GH Starter Kit. Uses the [docusaurus](https://docusaurus.io/) framework for static site building.
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 ## Installation
 
-Prequisites:
-* nodejs version >= 12.13.0
-* yarn (tested with version 1.19.0)
-
-To install all dependencies, run:
 ```console
 yarn install
 ```
@@ -28,3 +23,11 @@ yarn build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+## Deployment
+
+```console
+GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
