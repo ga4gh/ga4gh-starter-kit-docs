@@ -1,0 +1,42 @@
+name: deploy to S3
+
+on:
+  push:
+    branches: [ "develop", "yp-add-github-actions" ]
+  pull_request:
+    branches: [ "develop", "yp-add-github-actions" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js version 16.20.0
+        uses: actions/setup-node@v3
+        with: 
+          node-version: '16.20.0'
+          
+      - name: Set up Yarn 1.22.19
+        run: npm install -g yarn@1.22.19
+        
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+        
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@v1
+        with:
+          args: --acl public-read --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_DEV_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: 'build'
