@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ "develop", "yp-add-github-actions" ]
 
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
