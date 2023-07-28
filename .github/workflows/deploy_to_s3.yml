@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ "develop", "yp-add-github-actions" ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,6 +28,40 @@ jobs:
       - name: Build
         run: yarn build
         
+      - name: Upload build directory
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: build/
+          
+  deploy-to-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps: 
+      - name: Download build directory
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+      
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: 'build'
+     
+  deploy-to-prd:
+    runs-on: ubuntu-latest
+    environment: prd
+    steps:  
+      - name: Download build directory
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
