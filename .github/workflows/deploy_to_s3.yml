@@ -2,8 +2,10 @@ name: deploy to S3
 
 on:
   push:
+    # develop, main
     branches: [ "develop", "yp-add-github-actions" ]
   pull_request:
+    # develop
     branches: [ "develop", "yp-add-github-actions" ]
 
   workflow_dispatch:
@@ -38,7 +40,7 @@ jobs:
           
   deploy-to-dev:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
+    if: github.ref == github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
     needs: [build]
     environment: dev
     steps: 
@@ -50,6 +52,15 @@ jobs:
         with:
           name: build
           path: build/
+      
+      - name: If build directory is empty, exit with error
+        run: |
+          if [ -z "$(ls -A build)" ]; then
+            echo "'build' directory is empty!"
+            exit 1  # Fail the workflow if the 'build' directory is empty.
+          else
+            echo "'build' directory is not empty."
+          fi
       
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
@@ -74,6 +85,15 @@ jobs:
           name: build
           path: build/
           
+      - name: If build directory is empty, exit with error
+        run: |
+          if [ -z "$(ls -A build)" ]; then
+            echo "'build' directory is empty!"
+            exit 1  # Fail the workflow if the 'build' directory is empty.
+          else
+            echo "'build' directory is not empty."
+          fi
+          
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -83,3 +103,22 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: 'build'
+  
+  # on push to develop -> build and push ga4gh-starter-kit-docs-static-build:test 
+  # and ga4gh-starter-kit-docs-nginx-deploy:test images
+  
+  # on push to main -> build and push ga4gh-starter-kit-docs-static-build:{tag} 
+  # and ga4gh-starter-kit-docs-nginx-deploy:{tag} images
+
+# TODO: Add make commands to build and push docker image with test tag
+  
+#   build-push-docker-dev:
+#     runs-on: ubuntu-latest
+#     if: github.ref == github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
+#     environment: dev
+#     steps: 
+#       - name: Checkout the repository
+#         uses: actions/checkout@v3
+        
+#       - name: 
+    
