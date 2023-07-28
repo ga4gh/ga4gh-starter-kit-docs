@@ -38,7 +38,7 @@ jobs:
           
   deploy-to-dev:
     runs-on: ubuntu-latest
-    if: github.ref in ['refs/heads/main', 'refs/heads/develop', 'refs/heads/yp-add-github-actions']
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
     needs: [build]
     environment: dev
     steps: 
