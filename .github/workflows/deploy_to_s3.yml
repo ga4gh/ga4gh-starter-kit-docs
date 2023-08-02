@@ -123,20 +123,8 @@ jobs:
       - name: Install Make
         run: sudo apt-get update && sudo apt-get install -y make
 
-      - name: Build the static-build docker image
-        run: make build-docker-static-build-test
-
-      - name: Push the static-build docker image
-        run: make push-docker-static-build-test
-
-      - name: Run the static-build docker image to create build dir
-        run: make run-docker-static-build-test
-
-      - name: Build the nginx-deploy docker image
-        run: make build-docker-nginx-deploy-test
-
-      - name: Push the nginx-deploy docker image
-        run: make push-docker-nginx-deploy-test
+      - name: Build and Push static-build and nginx-deploy docker images
+        run: make publish-docker-images-test
 
   docker-deploy-prd:
     runs-on: ubuntu-latest
@@ -157,17 +145,5 @@ jobs:
       - name: Install Make
         run: sudo apt-get update && sudo apt-get install -y make
 
-      - name: Build the static-build docker image
-        run: make build-docker-static-build
-
-      - name: Push the static-build docker image
-        run: make push-docker-static-build
-
-      - name: Run the static-build docker image to create build dir
-        run: make run-docker-static-build
-
-      - name: Build the nginx-deploy docker image
-        run: make build-docker-nginx-deploy
-
-      - name: Push the nginx-deploy docker image
-        run: make push-docker-nginx-deploy
+      - name: Build and Push static-build and nginx-deploy docker images
+        run: make publish-docker-images
