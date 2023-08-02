@@ -129,6 +129,9 @@ jobs:
       - name: Push the static-build docker image
         run: make push-docker-static-build-test
 
+      - name: Run the static-build docker image to create build dir
+        run: make run-docker-static-build-test
+
       - name: Build the nginx-deploy docker image
         run: make build-docker-nginx-deploy-test
 
@@ -159,6 +162,9 @@ jobs:
 
       - name: Push the static-build docker image
         run: make push-docker-static-build
+
+      - name: Run the static-build docker image to create build dir
+        run: make run-docker-static-build
 
       - name: Build the nginx-deploy docker image
         run: make build-docker-nginx-deploy
