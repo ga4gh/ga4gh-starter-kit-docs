@@ -89,4 +89,4 @@ run-docker-nginx-deploy-test:
 	docker run -d -p 8080:80 $(TEST_DOCKER_IMG_NGINX_DEPLOY)
 
 .PHONY: publish-docker-images-test
-publish-docker-images: build-docker-static-build-test push-docker-static-build-test run-docker-static-build-test build-docker-nginx-deploy-test push-docker-nginx-deploy-test
+publish-docker-images-test: build-docker-static-build-test push-docker-static-build-test run-docker-static-build-test build-docker-nginx-deploy-test push-docker-nginx-deploy-test
