@@ -38,7 +38,7 @@ jobs:
           name: build
           path: build/
           
-  deploy-to-dev:
+  s3-deploy-dev:
     runs-on: ubuntu-latest
     if: github.ref == github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
     needs: [build]
@@ -72,7 +72,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: 'build'
      
-  deploy-to-prd:
+  s3-deploy-prd:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     needs: [build]
@@ -103,22 +103,66 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: 'build'
-  
-  # on push to develop -> build and push ga4gh-starter-kit-docs-static-build:test 
-  # and ga4gh-starter-kit-docs-nginx-deploy:test images
-  
-  # on push to main -> build and push ga4gh-starter-kit-docs-static-build:{tag} 
-  # and ga4gh-starter-kit-docs-nginx-deploy:{tag} images
 
-# TODO: Add make commands to build and push docker image with test tag
-  
-#   build-push-docker-dev:
-#     runs-on: ubuntu-latest
-#     if: github.ref == github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
-#     environment: dev
-#     steps: 
-#       - name: Checkout the repository
-#         uses: actions/checkout@v3
-        
-#       - name: 
-    
+
+  docker-deploy-dev:
+    runs-on: ubuntu-latest
+    if: github.ref == github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
+    # needs: [build]
+    environment: dev
+    steps:
+
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with: 
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Install Make
+        run: sudo apt-get update && sudo apt-get install -y make
+
+      - name: Build the static-build docker image
+        run: make build-docker-static-build-test
+
+      - name: Push the static-build docker image
+        run: make push-docker-static-build-test
+
+      - name: Build the nginx-deploy docker image
+        run: make build-docker-nginx-deploy-test
+
+      - name: Push the nginx-deploy docker image
+        run: make push-docker-nginx-deploy-test
+
+  docker-deploy-prd:
+    rruns-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    # needs: [build]
+    environment: prd
+    steps:
+
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with: 
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Install Make
+        run: sudo apt-get update && sudo apt-get install -y make
+
+      - name: Build the static-build docker image
+        run: make build-docker-static-build
+
+      - name: Push the static-build docker image
+        run: make push-docker-static-build
+
+      - name: Build the nginx-deploy docker image
+        run: make build-docker-nginx-deploy
+
+      - name: Push the nginx-deploy docker image
+        run: make push-docker-nginx-deploy
