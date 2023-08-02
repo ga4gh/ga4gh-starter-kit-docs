@@ -55,6 +55,9 @@ run-docker-nginx-deploy:
 	@echo "Running Docker container for Nginx deployment..."
 	docker run -d -p 8080:80 $(DOCKER_IMG_NGINX_DEPLOY)
 
+.PHONY: publish-docker-images
+publish-docker-images: build-docker-static-build push-docker-static-build run-docker-static-build build-docker-nginx-deploy push-docker-nginx-deploy
+
 .PHONY: build-docker-static-build-test
 build-docker-static-build-test:
 	@echo "Building Docker image for static build with test tag ..."
@@ -84,3 +87,6 @@ push-docker-nginx-deploy-test:
 run-docker-nginx-deploy-test:
 	@echo "Running Docker container for Nginx deployment with test tag ..."
 	docker run -d -p 8080:80 $(TEST_DOCKER_IMG_NGINX_DEPLOY)
+
+.PHONY: publish-docker-images-test
+publish-docker-images: build-docker-static-build-test push-docker-static-build-test run-docker-static-build-test build-docker-nginx-deploy-test push-docker-nginx-deploy-test
