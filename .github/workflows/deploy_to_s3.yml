@@ -2,11 +2,9 @@ name: deploy to S3
 
 on:
   push:
-    # develop, main
-    branches: [ "develop", "yp-add-github-actions" ]
+    branches: [ "develop", "main" ]
   pull_request:
-    # develop
-    branches: [ "develop", "yp-add-github-actions" ]
+    branches: [ "develop" ]
 
   workflow_dispatch:
 
@@ -40,7 +38,7 @@ jobs:
           
   s3-deploy-dev:
     runs-on: ubuntu-latest
-    if: github.ref == github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
+    if: github.ref == 'refs/heads/develop'
     needs: [build]
     environment: dev
     steps: 
@@ -106,8 +104,7 @@ jobs:
 
   docker-deploy-dev:
     runs-on: ubuntu-latest
-    if: github.ref == github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/yp-add-github-actions'
-    # needs: [build]
+    if: github.ref == 'refs/heads/develop'
     environment: dev
     steps:
 
@@ -134,7 +131,6 @@ jobs:
   docker-deploy-prd:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    # needs: [build]
     environment: prd
     steps:
 
