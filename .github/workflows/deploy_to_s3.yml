@@ -38,7 +38,7 @@ jobs:
           
   s3-deploy-dev:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/develop' || (github.event_name == 'pull_request' && github.base_ref == 'refs/heads/develop')
     needs: [build]
     environment: dev
     steps: 
@@ -104,7 +104,7 @@ jobs:
 
   docker-deploy-dev:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/develop' || (github.event_name == 'pull_request' && github.base_ref == 'refs/heads/develop')
     environment: dev
     steps:
 
