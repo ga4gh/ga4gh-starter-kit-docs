@@ -119,8 +119,12 @@ jobs:
           pwd &&
           echo "Printing current working dir contents" &&
           ls -larth &&
+          echo "Printing ./build dir contents" &&
+          ls -alrth ./build &&
           echo "Printing build dir contents" &&
-          ls ./build &&
+          ls -alrth build &&
+          echo "Printing {pwd}/build dir contents" &&
+          ls -alrth /home/runner/work/ga4gh-starter-kit-docs/ga4gh-starter-kit-docs/build &&
           make build-docker-nginx-deploy-test &&
           make push-docker-nginx-deploy-test
 
