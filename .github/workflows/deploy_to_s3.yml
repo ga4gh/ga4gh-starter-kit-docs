@@ -124,7 +124,12 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y make
 
       - name: Build and Push static-build and nginx-deploy docker images
-        run: make publish-docker-images-test
+        run: |
+          make build-docker-static-build-test &&
+          make push-docker-static-build-test &&
+          make run-docker-static-build-test &&
+          make build-docker-nginx-deploy-test &&
+          make push-docker-nginx-deploy-test
 
   docker-deploy-prd:
     runs-on: ubuntu-latest
@@ -146,4 +151,9 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y make
 
       - name: Build and Push static-build and nginx-deploy docker images
-        run: make publish-docker-images
+        run: |
+          make build-docker-static-build &&
+          make push-docker-static-build &&
+          make run-docker-static-build &&
+          make build-docker-nginx-deploy &&
+          make push-docker-nginx-deploy
