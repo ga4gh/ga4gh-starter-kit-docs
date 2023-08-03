@@ -115,6 +115,7 @@ jobs:
           make build-docker-static-build-test &&
           make push-docker-static-build-test &&
           make run-docker-static-build-test &&
+          ls ./build &&
           make build-docker-nginx-deploy-test &&
           make push-docker-nginx-deploy-test
 
