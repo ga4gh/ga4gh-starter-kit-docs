@@ -1,13 +1,5 @@
 name: deploy to S3
-
-on:
-  push:
-    branches: [ "develop", "main" ]
-  pull_request:
-    branches: [ "develop" ]
-
-  workflow_dispatch:
-
+on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -38,7 +30,6 @@ jobs:
           
   s3-deploy-dev:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop' || (github.event_name == 'pull_request' && github.base_ref == 'refs/heads/develop')
     needs: [build]
     environment: dev
     steps: 
@@ -72,7 +63,7 @@ jobs:
      
   s3-deploy-prd:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Only runs if pushing to main
     needs: [build]
     environment: prd
     steps:  
@@ -104,7 +95,6 @@ jobs:
 
   docker-deploy-dev:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop' || (github.event_name == 'pull_request' && github.base_ref == 'refs/heads/develop')
     environment: dev
     steps:
 
@@ -130,7 +120,7 @@ jobs:
 
   docker-deploy-prd:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Only runs if pushing to main
     environment: prd
     steps:
 
