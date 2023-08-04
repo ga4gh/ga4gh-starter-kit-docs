@@ -3,7 +3,6 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: dev
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
