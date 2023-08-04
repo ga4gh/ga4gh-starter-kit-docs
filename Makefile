@@ -38,7 +38,9 @@ push-docker-static-build:
 .PHONY: run-docker-static-build
 run-docker-static-build:
 	@echo "Running Docker container for static build..."
-	docker run -d -v $(PWD)/build/:/app/build/ $(DOCKER_IMG_STATIC_BUILD)
+	docker run -d --name starter-kit-docs-static-build -v $(PWD)/build/:/app/build/ $(DOCKER_IMG_STATIC_BUILD)
+	docker wait starter-kit-docs-static-build
+	sleep 5
 
 .PHONY: build-docker-nginx-deploy
 build-docker-nginx-deploy:
@@ -71,7 +73,9 @@ push-docker-static-build-test:
 .PHONY: run-docker-static-build-test
 run-docker-static-build-test:
 	@echo "Running Docker container for static build with test tag ..."
-	docker run -d -v $(PWD)/build/:/app/build/ $(TEST_DOCKER_IMG_STATIC_BUILD)
+	docker run -d --name starter-kit-docs-static-build-test -v $(PWD)/build/:/app/build/ $(TEST_DOCKER_IMG_STATIC_BUILD)
+	docker wait starter-kit-docs-static-build-test
+	sleep 5
 
 .PHONY: build-docker-nginx-deploy-test
 build-docker-nginx-deploy-test:
