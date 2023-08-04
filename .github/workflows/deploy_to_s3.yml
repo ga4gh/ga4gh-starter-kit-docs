@@ -115,16 +115,6 @@ jobs:
           make build-docker-static-build-test &&
           make push-docker-static-build-test &&
           make run-docker-static-build-test &&
-          echo "Printing current working dir" &&
-          pwd &&
-          echo "Printing current working dir contents" &&
-          ls -larth &&
-          echo "Printing ./build dir contents" &&
-          ls -alrth ./build &&
-          echo "Printing build dir contents" &&
-          ls -alrth build &&
-          echo "Printing {pwd}/build dir contents" &&
-          ls -alrth /home/runner/work/ga4gh-starter-kit-docs/ga4gh-starter-kit-docs/build &&
           make build-docker-nginx-deploy-test &&
           make push-docker-nginx-deploy-test
 
