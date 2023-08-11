@@ -37,7 +37,7 @@ You should receive a response with a status of `200`, and a response body contai
 }
 ```
 
-## Test Datasets
+## Visas in the Passport Broker
 
 The list of Visas in the DB can be displayed by using a GET request
 
@@ -107,16 +107,27 @@ The response should look similar to the response shown below
 }
 ```
 
+## Users in the Passport Broker
+
+To create a new user, go to http://127.0.0.1:4455/welcome to enter the welcome page.
+Towards the bottom, under Account Management press Sign Up to create an account.
+After signing up, you should see your account information on the welcome page, under User Information.
+
+Once the sign up is complete, a user in the passport broker service will also be created. Confirm the new user is created:
+
 You can also request the list of users in the broker 
 
 ```
 GET http://localhost:4501/admin/ga4gh/passport/v1/users
 ```
+## Check the Visas of a User
 
-and further request the information on the visas a user has using
+You can further request information on the visas a specific user has by running the search below with the USER_ID replaced by the targeted user ID
 ```
 GET http://localhost:4501/admin/ga4gh/passport/v1/users/<USER_ID>
 ```
+
+## Assigning New Visas to a User
 
 To assign a new visa to a user you will need to make a put request
 ```
@@ -149,4 +160,9 @@ In headers, include a key Content-Type with value application/json. In the body 
 }
 ```
 
+## Getting a Passport JWT (Json Web Token)
+
+Back in the [welcome page](http://127.0.0.1:4455/welcome) press [Get Passport Token](http://127.0.0.1:4455/passport). On this page you should see your assigned visas, if no visas are assigned please look at the previous step. Select some visas, and then press Get Passport Token.
+
+You can confirm the validity of your JWT token by visiting https://jwt.io/ and pasting the JWT token to examine its contents.
 
