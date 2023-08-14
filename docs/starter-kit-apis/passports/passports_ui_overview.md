@@ -32,7 +32,7 @@ docker images
 
 Confirm that the image for the repository `ga4gh/ga4gh-starter-kit-passport-ui-node`
 
-The GA4GH Passports: [Starterkit]("https://starterkit.ga4gh.org/") Implementation is made up of multiple services, this UI-node being one of them. In order to start running multiple services at once a [docker compose](./passport-develop.yml) file used.
+The GA4GH Passports: [Starterkit](https://starterkit.ga4gh.org/) Implementation is made up of multiple services, this UI-node being one of them. In order to start running multiple services at once a [docker compose](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui/blob/595b13e965ce1cfbb7f042baa9da34b5d9334ad2/passport-develop.yml) file used.
 
 Spin up the docker compose to run the passport network (Hydra, Kratos, our UI) file by running:
 ```
@@ -102,7 +102,7 @@ where:
 * `CONTAINER_ADMIN_API_PORT`: The port within the docker container that the admin API endpoints will be served over, must be equal to the `adminApiPort` value in `serverProps`; e.g. `3000`. [More info](../../concepts-and-guides/configuring-webservice-properties)
 * `HOST_ADMIN_API_PORT`: The mapped port on the host machine that will serve the admin API endpoints; e.g. `8080`
 * `HOST_CONFIG_DIR`: Absolute file path to directory containing YAML config file; e.g. `/home/user/passport/config`
-* `CONFIG_FILE`: Name of YAML config file mounted to container; e.g. `config.yml` [More info](./passport_configuration)
+* `CONFIG_FILE`: Name of YAML config file mounted to container; e.g. `config.yml` [More info](./passports_configuration)
 
 The following snippet displays an example `docker run` command:
 ```
