@@ -1,53 +1,52 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Starter Kit Passport UI Overview
 
 The Current Starter Kit Passport UI Release **0.0.2** implements GA4GH Passport Specification Release **1.2.0**
 
-[Github](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui), [Docker Hub](https://hub.docker.com/repository/docker/ga4gh/ga4gh-starter-kit-passport-ui)
+[Github](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui), [Docker Hub](https://hub.docker.com/repository/docker/ga4gh/ga4gh-starter-kit-passport-ui-node)
 
-The GA4GH Passport UI is the central UI server that connects the other Passport_related microservice (ory hydra, ory kratos). The GA4GH Passports: Starterkit Implementation is made up of multiple services, this UI-node being one of them. To make API requests, the Passport Broker Service will need to be running. [View specification](https://github.com/ga4gh-duri/ga4gh-duri.github.io/blob/master/researcher_ids/ga4gh_passport_v1.md).
+The GA4GH Passport UI is the central UI server that connects the other Passport related microservice (ory hydra, ory kratos). The GA4GH Passports: Starterkit Implementation is made up of multiple services, this UI-node being one of them. To make API requests, the Passport Broker Service will need to be running. [View specification](https://github.com/ga4gh-duri/ga4gh-duri.github.io/blob/master/researcher_ids/ga4gh_passport_v1.md).
 
 
-## Installation and Run from makefile
+## Installation and Usage
 
 To run the Passport UI, first clone the Passport UI repo
 ```
 git clone https://github.com/ga4gh/ga4gh-starter-kit-passport-ui
 ```
 
-This service is a docker container, having [Docker Desktop](https://docs.docker.com/desktop/) installed beforehand will be useful. This repo also uses a [Makefile](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui/blob/main/Makefile), which allows defining special shell commands. If you would like to see what does the make commands do in more detail, please visit the file.
+This service is a docker container, having [Docker Desktop](https://docs.docker.com/desktop/) installed beforehand will be useful. 
 
-Next build the `docker image` with the contents of the repo:
+After cloning the repository, navigate to the cloned repo and use the command below to run the different services in the passport-network docker-compose file.
 ```
-make docker-build
+docker-compose -f passport-network.yml up --build --force-recreate
 ```
 
-You can comfirm that the `docker image` is present by running;
+You can confirm hydra and kratos are running by confirming the following response in the command prompt
 ```
-docker images
+ga4gh-starter-kit-passport-ui_kratos-migrate_1 exited with code 0
+ga4gh-starter-kit-passport-ui_hydra-migrate_1 exited with code 0
 ```
+
+Ory hydra is a OAuth 2.0 and Open ID Connect certified server. It allows you to interface with the passport application and login systems.
+
+Ory kratos is the identity management system for the server for the different users. This service supports user creation and management.
+
+Confirm the passport broker is running using a request to the passport broker service info
+```
+GET http://localhost:4500/ga4gh/passport/v1/service-info
+```
+
+You should get back an object body starting with `id` with value `"org.ga4gh.starterkit.passport.broker"`, and other information.
 
 Confirm that the image for the repository `ga4gh/ga4gh-starter-kit-passport-ui-node`
 
 The GA4GH Passports: [Starterkit](https://starterkit.ga4gh.org/) Implementation is made up of multiple services, this UI-node being one of them. In order to start running multiple services at once a [docker compose](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui/blob/595b13e965ce1cfbb7f042baa9da34b5d9334ad2/passport-develop.yml) file used.
 
-Spin up the docker compose to run the passport network (Hydra, Kratos, our UI) file by running:
-```
-make passport-network
-```
 
-If you want to just run the Ory Hydra Service:
-```
-make run-hydra
-```
-
-If you want to just run the Ory Kratos Service:
-```
-make run-kratos
-```
 
 ***
 ###### Installing and Run with Docker
@@ -77,23 +76,6 @@ docker-compose -f hydra-service.yml up --build --force-recreate
 To run just the Ory Kratos service:
 ```
 docker-compose -f kratos-service.yml up --build --force-recreate
-```
-
-To run the container with all default settings, run:
-```
-docker run -p 4500:4500 ga4gh/ga4gh-starter-kit-passport-ui:latest
-```
-
-The above command will run the Starter Kit Passport UI service within the docker container. The service will serve data from the preconfigured test database bundled within the container. The default public and admin API ports `4500` and `4501` inside the container will be mapped to the equivalent ports on the host machine.
-
-To run the Starter Kit Passport UI service with a YAML config file overriding default behavior, run:
-```
-docker run \
-    -p ${HOST_PUBLIC_API_PORT}:${CONTAINER_PUBLIC_API_PORT} \
-    -p ${HOST_ADMIN_API_PORT}:${CONTAINER_ADMIN_API_PORT} \
-    -v ${HOST_CONFIG_DIR}:/config \
-    ga4gh/ga4gh-starter-kit-passport-ui:0.0.2 \
-    java -jar ga4gh-starter-kit-passport-ui.jar -c /config/${CONFIG_FILE}
 ```
 
 where:

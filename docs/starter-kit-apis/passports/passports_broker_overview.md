@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # Starter Kit Passport Broker Overview
@@ -8,11 +8,7 @@ The Current Starter Kit Passport Release **0.0.2** implements GA4GH Passport Spe
 
 [Github](https://github.com/ga4gh/ga4gh-starter-kit-passport-broker), [Docker Hub](https://hub.docker.com/r/ga4gh/ga4gh-starter-kit-passport-broker)
 
-Please see starterkit.ga4gh.org for the full documentation on how to run the Starter Kit, including the Passport Broker.
-
 Basic instructions for running Starter Kit Passport Broker in a dev environment are included here.
-
-
 
 ## Installation and Usage
 
@@ -21,7 +17,7 @@ To install, first pull the docker image:
 docker pull ga4gh/ga4gh-starter-kit-passport-broker:${TAG}
 ```
 
-where `${TAG}` represents the release version of the application. See the "Latest Starter Kit Passport Broker Release" above for the most current release, or browse releases/tags on [Docker Hub](https://hub.docker.com/repository/docker/ga4gh/ga4gh-starter-kit-passport-broker/tags).
+where `${TAG}` represents the release version of the application. Browse releases/tags on [Docker Hub](https://hub.docker.com/repository/docker/ga4gh/ga4gh-starter-kit-passport-broker/tags).
 
 e.g.
 ```
@@ -30,7 +26,7 @@ docker pull ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
 
 To run the container with all default settings, run:
 ```
-docker run -p 4500:4500 ga4gh/ga4gh-starter-kit-passport-broker:latest
+docker run -p 4501:4501 ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
 ```
 
 The above command will run the Starter Kit Passport Broker service within the docker container. The service will serve data from the preconfigured test database bundled within the container. The default public and admin API ports `4500` and `4501` inside the container will be mapped to the equivalent ports on the host machine.
@@ -59,6 +55,6 @@ docker run \
     -p 80:7000 \
     -p 7001:7001 \
     -v /home/usr/passport/config:/config \
-    ga4gh/ga4gh-starter-kit-passport-broker:0.2.0 \
+    ga4gh/ga4gh-starter-kit-passport-broker:0.0.2 \
     java -jar ga4gh-starter-kit-passport-broker.jar -c /config/config.yml
 ```

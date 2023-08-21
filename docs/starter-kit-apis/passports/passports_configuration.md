@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
-# Starter Kit Passport Configuration
+# Starter Kit Passport Broker Configuration
 
 The Starter Kit Passport service can be configured with modifiable properties. All property configuration is done via a YAML config file that is supplied to the program at runtime via a `-c ${CONFIG_FILE}` option. This section outlines the structure of the YAML config.
 

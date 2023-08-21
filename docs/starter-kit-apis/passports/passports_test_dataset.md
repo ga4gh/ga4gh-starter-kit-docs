@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 ---
 
-# Starter Kit Passport Test Dataset
+# Starter Kit Passport Broker Test Dataset
 
 The Starter Kit Passport docker image comes prebundled with a test dataset. The test dataset will be served via the Passport broker if no overriding database connection is provided. In this section we will confirm that we can execute HTTP requests to a running Starter Kit Passport service and receive the expected response.
 
@@ -162,7 +162,11 @@ In headers, include a key Content-Type with value application/json. In the body 
 
 ## Getting a Passport JWT (Json Web Token)
 
+![Welcome Page](welcome_page.png)
+
 Back in the [welcome page](http://127.0.0.1:4455/welcome) press [Get Passport Token](http://127.0.0.1:4455/passport). On this page you should see your assigned visas, if no visas are assigned please look at the previous step. Select some visas, and then press Get Passport Token.
+
+![JWT Example](jwt_example.png)
 
 You can confirm the validity of your JWT token by visiting https://jwt.io/ and pasting the JWT token to examine its contents.
 
