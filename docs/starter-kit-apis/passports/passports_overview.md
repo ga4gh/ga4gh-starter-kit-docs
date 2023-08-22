@@ -8,9 +8,9 @@ The Current Starter Kit Passport Release **0.0.2** implements GA4GH Passport Spe
 
 The GA4GH Starter Kit Passport implementation is broken down into two starter kits; The Starter Kit Passport UI and the Starter Kit Passport Broker.
 
-The [Passport UI]((./passports_ui_overview)) creates the front end interface that makes it easier to use the passports implementation. This UI connects two other Passport-related microservices, which are ory Hydra and ory Kratos. Using the UI, you are able to view visas, manage users, and get passport tokens all from the web page.
+The [Passport UI](./passports_ui_overview) creates the front end interface that makes it easier to use the passports implementation. This UI connects two other Passport-related microservices, which are ory Hydra and ory Kratos. Using the UI, you are able to view visas, manage users, and get passport tokens all from the web page.
 
-The [Passport Broker]((./passports_broker_overview)) is the passport server that can respond to http requests with the data. This implementation works as the backend to the UI starter kit and can be run by itself for users who want to bypass the UI and make requests directly using http. The Passport Broker provides the endpoints in the [Passports specification](https://github.com/ga4gh-duri/ga4gh-duri.github.io/blob/master/researcher_ids/ga4gh_passport_v1.md).
+The [Passport Broker](./passports_broker_overview) is the passport server that can respond to http requests with the data. This implementation works as the backend to the UI starter kit and can be run by itself for users who want to bypass the UI and make requests directly using http. The Passport Broker provides the endpoints in the [Passports specification](https://github.com/ga4gh-duri/ga4gh-duri.github.io/blob/master/researcher_ids/ga4gh_passport_v1.md).
 
 ## Installation and Usage
 
