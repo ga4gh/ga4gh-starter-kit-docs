@@ -26,7 +26,7 @@ docker pull ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
 
 To run the container with all default settings, run:
 ```
-docker run -p 4501:4501 ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
+docker run -p 4500:4500 -p 4501:4501 ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
 ```
 
 The above command will run the Starter Kit Passport Broker service within the docker container. The service will serve data from the preconfigured test database bundled within the container. The default public and admin API ports `4500` and `4501` inside the container will be mapped to the equivalent ports on the host machine.
