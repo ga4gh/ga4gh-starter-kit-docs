@@ -54,6 +54,7 @@ The following table links out to the full installation and configuration instruc
 |------|---------------|
 | GA4GH Starter Kit DRS | [Documentation](../starter-kit-apis/drs/drs_overview)
 | GA4GH Starter Kit WES | [Documentation](../starter-kit-apis/wes/wes_overview)
-| GA4GH Starter Kit Passport UI | [Documentation](../starter-kit-apis/passports/passports_ui_overview)
-| GA4GH Starter Kit Passport Broker | [Documentation](../starter-kit-apis/passports/passports_broker_overview)
 | GA4GH Starter Kit Data Connect | [Documentation](../starter-kit-apis/data_connect/data_connect_overview) |
+| GA4GH Starter Kit Passport UI | [Documentation](../starter-kit-apis/passport/passport_ui_overview)
+| GA4GH Starter Kit Passport Broker | [Documentation](../starter-kit-apis/passport/passport_broker_overview)
+
