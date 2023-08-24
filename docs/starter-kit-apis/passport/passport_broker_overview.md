@@ -47,7 +47,7 @@ where:
 * `CONTAINER_ADMIN_API_PORT`: The port within the docker container that the admin API endpoints will be served over, must be equal to the `adminApiPort` value in `serverProps`; e.g. `3000`. [More info](../../concepts-and-guides/configuring-webservice-properties)
 * `HOST_ADMIN_API_PORT`: The mapped port on the host machine that will serve the admin API endpoints; e.g. `8080`
 * `HOST_CONFIG_DIR`: Absolute file path to directory containing YAML config file; e.g. `/home/user/passport/config`
-* `CONFIG_FILE`: Name of YAML config file mounted to container; e.g. `config.yml` [More info](./passports_configuration)
+* `CONFIG_FILE`: Name of YAML config file mounted to container; e.g. `config.yml` [More info](./passport_configuration)
 
 The following snippet displays an example `docker run` command:
 ```

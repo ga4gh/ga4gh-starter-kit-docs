@@ -8,7 +8,7 @@ The Current Starter Kit Passport UI Release **0.0.2** implements GA4GH Passport 
 
 [Github](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui), [Docker Hub](https://hub.docker.com/repository/docker/ga4gh/ga4gh-starter-kit-passport-ui-node)
 
-The GA4GH Starter Kit Passport UI is the central UI server that connects the other Starter Kit Passport related microservice (ory hydra, ory kratos). The GA4GH Starter Kit Passport: Starterkit Implementation is made up of multiple services, this UI-node being one of them. To make API requests, the Passport Broker Service will need to be running. [View specification](https://github.com/ga4gh-duri/ga4gh-duri.github.io/blob/master/researcher_ids/ga4gh_passport_v1.md).
+The GA4GH Passport UI is the central UI server that connects the other Passport related microservice (ory hydra, ory kratos). The GA4GH Passport: Starterkit Implementation is made up of multiple services, this UI-node being one of them. To make API requests, the Passport Broker Service will need to be running. [View specification](https://github.com/ga4gh-duri/ga4gh-duri.github.io/blob/master/researcher_ids/ga4gh_passport_v1.md).
 
 
 ## Installation and Usage
@@ -44,12 +44,11 @@ You should get back an object body starting with `id` with value `"org.ga4gh.sta
 
 Confirm that the image for the repository `ga4gh/ga4gh-starter-kit-passport-ui-node`
 
-The GA4GH Starter Kit Passport network implementation is made up of multiple services, this UI-node being one of them. In order to start running multiple services at once a [docker compose](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui/blob/595b13e965ce1cfbb7f042baa9da34b5d9334ad2/passport-develop.yml) file used.
-
+In order to start running multiple services at once a [docker compose](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui/blob/595b13e965ce1cfbb7f042baa9da34b5d9334ad2/passport-develop.yml) file can be used.
 
 
 ***
-###### Installing and Run with Docker
+## Installing and Run with Docker
 
 To install, first pull the docker image:
 ```
@@ -84,7 +83,7 @@ where:
 * `CONTAINER_ADMIN_API_PORT`: The port within the docker container that the admin API endpoints will be served over, must be equal to the `adminApiPort` value in `serverProps`; e.g. `3000`. [More info](../../concepts-and-guides/configuring-webservice-properties)
 * `HOST_ADMIN_API_PORT`: The mapped port on the host machine that will serve the admin API endpoints; e.g. `8080`
 * `HOST_CONFIG_DIR`: Absolute file path to directory containing YAML config file; e.g. `/home/user/passport/config`
-* `CONFIG_FILE`: Name of YAML config file mounted to container; e.g. `config.yml` [More info](./passports_configuration)
+* `CONFIG_FILE`: Name of YAML config file mounted to container; e.g. `config.yml` [More info](./passport_configuration)
 
 The following snippet displays an example `docker run` command:
 ```

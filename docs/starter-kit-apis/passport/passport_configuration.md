@@ -24,7 +24,7 @@ The following table lists the default attribute values returned over `/service-i
 |-----------|---------------|
 | `id` | org.ga4gh.starterkit.passport.broker |
 | `name` | GA4GH Starter Kit Passport Broker Service |
-| `description` | Starter Kit implementation of a Passport Broker service, outlined in the GA4GH Passports specification. Manages researcher permissions to data and compute, and enables this information to be minted as JWTs and passed to downstream clearinghouses. |
+| `description` | Starter Kit implementation of a Passport Broker service, outlined in the GA4GH Passport specification. Manages researcher permissions to data and compute, and enables this information to be minted as JWTs and passed to downstream clearinghouses. |
 | `contactUrl` | mailto:info@ga4gh.org |
 | `documentationUrl` | https://github.com/ga4gh/ga4gh-starter-kit-passport-broker |
 | `createdAt` | 2022-04-28T09:00:00Z |

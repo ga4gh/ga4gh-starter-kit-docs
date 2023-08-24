@@ -18,7 +18,7 @@ You should receive a response with a status of `200`, and a response body contai
 {
     "id": "org.ga4gh.starterkit.passport.broker",
     "name": "GA4GH Starter Kit Passport Broker Service",
-    "description": "Starter Kit implementation of a Passport Broker service, outlined in the GA4GH Passports specification. Manages researcher permissions to data and compute, and enables this information to be minted as JWTs and passed to downstream clearinghouses.",
+    "description": "Starter Kit implementation of a Passport Broker service, outlined in the GA4GH Passport specification. Manages researcher permissions to data and compute, and enables this information to be minted as JWTs and passed to downstream clearinghouses.",
     "contactUrl": "mailto:info@ga4gh.org",
     "documentationUrl": "https://github.com/ga4gh/ga4gh-starter-kit-passport-broker",
     "createdAt": "2022-04-28T09:00:00Z",
@@ -162,11 +162,11 @@ In headers, include a key Content-Type with value application/json. In the body 
 
 ## Getting a Passport JWT (Json Web Token)
 
-![Welcome Page](welcome_page.png)
+![Welcome Page](../../../static/img/welcome_page.png)
 
 Back in the [welcome page](http://127.0.0.1:4455/welcome) press [Get Passport Token](http://127.0.0.1:4455/passport). On this page you should see your assigned visas, if no visas are assigned please look at the previous step. Select some visas, and then press Get Passport Token.
 
-![JWT Example](jwt_example.png)
+![JWT Example](../../../static/img/jwt_example.png)
 
 You can confirm the validity of your JWT token by visiting https://jwt.io/ and pasting the JWT token to examine its contents.
 
