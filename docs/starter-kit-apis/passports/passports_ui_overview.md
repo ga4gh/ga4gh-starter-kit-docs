@@ -8,7 +8,7 @@ The Current Starter Kit Passport UI Release **0.0.2** implements GA4GH Passport 
 
 [Github](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui), [Docker Hub](https://hub.docker.com/repository/docker/ga4gh/ga4gh-starter-kit-passport-ui-node)
 
-The GA4GH Passport UI is the central UI server that connects the other Passport related microservice (ory hydra, ory kratos). The GA4GH Passports: Starterkit Implementation is made up of multiple services, this UI-node being one of them. To make API requests, the Passport Broker Service will need to be running. [View specification](https://github.com/ga4gh-duri/ga4gh-duri.github.io/blob/master/researcher_ids/ga4gh_passport_v1.md).
+The GA4GH Starter Kit Passport UI is the central UI server that connects the other Starter Kit Passport related microservice (ory hydra, ory kratos). The GA4GH Starter Kit Passport: Starterkit Implementation is made up of multiple services, this UI-node being one of them. To make API requests, the Passport Broker Service will need to be running. [View specification](https://github.com/ga4gh-duri/ga4gh-duri.github.io/blob/master/researcher_ids/ga4gh_passport_v1.md).
 
 
 ## Installation and Usage
