@@ -44,7 +44,7 @@ You should get back an object body starting with `id` with value `"org.ga4gh.sta
 
 Confirm that the image for the repository `ga4gh/ga4gh-starter-kit-passport-ui-node`
 
-The GA4GH Passports: [Starterkit](https://starterkit.ga4gh.org/) Implementation is made up of multiple services, this UI-node being one of them. In order to start running multiple services at once a [docker compose](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui/blob/595b13e965ce1cfbb7f042baa9da34b5d9334ad2/passport-develop.yml) file used.
+The GA4GH Starter Kit Passport network implementation is made up of multiple services, this UI-node being one of them. In order to start running multiple services at once a [docker compose](https://github.com/ga4gh/ga4gh-starter-kit-passport-ui/blob/595b13e965ce1cfbb7f042baa9da34b5d9334ad2/passport-develop.yml) file used.
 
 
 
