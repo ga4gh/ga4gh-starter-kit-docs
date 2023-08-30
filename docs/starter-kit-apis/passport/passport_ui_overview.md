@@ -25,20 +25,16 @@ After cloning the repository, navigate to the cloned repo and use the command be
 docker-compose -f passport-network.yml up --build --force-recreate -d
 ```
 
+The following services should be displayed when the command above is run
+![Passport Services](/img/passport-services.png)
+
 Ory hydra is a OAuth 2.0 and Open ID Connect certified server. It allows you to interface with the passport application and login systems.
 
 Ory kratos is the identity management system for the server for the different users. This service supports user creation and management.
 
 MailSlurper is a SMTP mail server that is used to test email functionality. It is used in the developer environment of the starterkit as part of the kratos user management system. 
 
-Confirm the passport broker is running using a request to the passport broker service info
+To stop and remove all the deployed Docker containers, networks, and volumes created using the `passport-network.yml` docker-compose file, execute the following command.
 ```
-GET http://localhost:4500/ga4gh/passport/v1/service-info
-```
-
-You should get back an object body starting with `id` with value `"org.ga4gh.starterkit.passport.broker"`, and other information.
-
-Once you are done using the Passport UI, make sure to close the docker containers with the command
-```
-docker-compose down
+make docker-down
 ```

@@ -4,9 +4,11 @@ sidebar_position: 5
 
 # Starter Kit Passport Broker Test Dataset
 
-The Starter Kit Passport docker image comes prebundled with a test dataset. The test dataset will be served via the Passport broker if no overriding database connection is provided. In this section we will confirm that we can execute HTTP requests to a running Starter Kit Passport service and receive the expected response.
+The Starter Kit Passport Broker docker image comes prebundled with a test dataset. The test dataset will be served via the Passport broker if no overriding database connection is provided. n this section, we will confirm that we can execute HTTP requests to a running network of [Starter Kit Passport services](/passport_ui_overview) and receive the expected responses.
 
 ## Test HTTP Requests
+
+Assuming you have a Starter Kit Passport Broker and Starter Kit Passport UI services running locally with all default properties, you may use the following HTTP requests to confirm if the services are running as expected.
 
 Using your preferred API testing tool (e.g. Postman), issue the following HTTP request for the service info endpoint.
 ```
@@ -129,9 +131,9 @@ GET http://localhost:4501/admin/ga4gh/passport/v1/users/<USER_ID>
 
 ## Assigning New Visas to a User
 
-To assign a new visa to a user you will need to make a put request
+To assign a new visa to a user you will need to make a PUT request
 ```
-http://localhost:4501/admin/ga4gh/passport/v1/users/<USER_ID>
+PUT http://localhost:4501/admin/ga4gh/passport/v1/users/<USER_ID>
 ```
 In headers, include a key Content-Type with value application/json. In the body include a JSON object with two keys, first the "id" which should be the users ID as a string, and "passportVisaAssertions" which will be an array of visas. Make sure to replace the USER_ID with the real value. See an example body below:
 ```
