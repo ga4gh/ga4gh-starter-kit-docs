@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Starter Kit Passport Broker Test Dataset
 
-The Starter Kit Passport Broker docker image comes prebundled with a test dataset. The test dataset will be served via the Passport broker if no overriding database connection is provided. n this section, we will confirm that we can execute HTTP requests to a running network of [Starter Kit Passport services](/passport_ui_overview) and receive the expected responses.
+The Starter Kit Passport Broker docker image comes prebundled with a test dataset. The test dataset will be served via the Passport broker if no overriding database connection is provided. n this section, we will confirm that we can execute HTTP requests to a running network of [Starter Kit Passport services](./passport_ui_overview) and receive the expected responses.
 
 ## Test HTTP Requests
 
