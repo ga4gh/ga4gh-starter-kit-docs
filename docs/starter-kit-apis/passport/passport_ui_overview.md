@@ -36,5 +36,5 @@ MailSlurper is a SMTP mail server that is used to test email functionality. It i
 
 To stop and remove all the deployed Docker containers, networks, and volumes created using the `passport-network.yml` docker-compose file, execute the following command.
 ```
-make docker-down
+docker-compose -f passport-network.yml down -v
 ```
