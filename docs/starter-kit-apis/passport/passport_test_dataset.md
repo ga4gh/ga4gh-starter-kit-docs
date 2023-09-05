@@ -168,7 +168,6 @@ In headers, include a key Content-Type with value application/json. In the body 
 
 Back in the [welcome page](http://127.0.0.1:4455/welcome) press [Get Passport Token](http://127.0.0.1:4455/passport). On this page you should see your assigned visas, if no visas are assigned please look at the previous step. Select some visas, and then press Get Passport Token.
 
-![JWT Example](/img/jwt_example.png)
 
 You can confirm the validity of your JWT token by visiting https://jwt.io/ and pasting the JWT token to examine its contents.
-
+![JWT Example](/img/jwt_example.png)
